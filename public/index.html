@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduCourse Portal - Database Integrated Educational Platform</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement / DB Status Bar -->
+  <div class="top-banner">
+    <div class="container top-banner-content">
+      <div class="banner-item">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>Experiment No. 11: Database Integration in Node.js Application Using MongoDB</span>
+      </div>
+      <div class="banner-item db-status-wrap">
+        <span class="db-pill" id="dbStatusPill">
+          <span class="status-dot pulsing" id="dbStatusDot"></span>
+          <span id="dbStatusText">Checking MongoDB...</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <header class="navbar-wrapper">
+    <div class="container navbar">
+      <a href="#home" class="nav-brand">
+        <div class="brand-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+        <div class="brand-text">
+          <span class="brand-title">EduCourse</span>
+          <span class="brand-tag">PORTAL</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#courses" class="nav-link"><i class="fa-solid fa-layer-group"></i> Courses</a>
+        <a href="#register" class="nav-link"><i class="fa-solid fa-user-plus"></i> Register</a>
+        <a href="#dashboard" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+        <a href="#about" class="nav-link"><i class="fa-solid fa-circle-info"></i> About</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#register" class="btn btn-primary nav-cta">
+          <i class="fa-solid fa-pen-to-square"></i> Enroll Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- HOME / HERO SECTION -->
+  <section id="home" class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="badge-chip">
+          <i class="fa-solid fa-server"></i> Live MongoDB Community Server Connected
+        </div>
+        <h1 class="hero-title">
+          Advance Your Career with <span class="text-gradient">Next-Gen Tech Courses</span>
+        </h1>
+        <p class="hero-subtitle">
+          Join our comprehensive educational platform powered by Node.js, Express, and MongoDB. Register for industry-standard courses, manage enrollments in real time, and monitor your academic journey.
+        </p>
+        <div class="hero-actions">
+          <a href="#courses" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-compass"></i> Explore Courses
+          </a>
+          <a href="#dashboard" class="btn btn-outline btn-lg">
+            <i class="fa-solid fa-users-gear"></i> View Student Dashboard
+          </a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="metric-data">
+              <span class="metric-num">6+</span>
+              <span class="metric-lbl">Flagship Programs</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fa-solid fa-database"></i></div>
+            <div class="metric-data">
+              <span class="metric-num" id="heroStudentCount">0</span>
+              <span class="metric-lbl">Students in MongoDB</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="metric-data">
+              <span class="metric-num">100%</span>
+              <span class="metric-lbl">Real-time CRUD Sync</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-preview">
+          <div class="preview-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="preview-title">MongoDB Node.js Architecture</span>
+          </div>
+          <div class="preview-body">
+            <div class="code-preview">
+              <span class="code-line"><span class="c-keyword">const</span> express = <span class="c-fn">require</span>(<span class="c-str">'express'</span>);</span>
+              <span class="code-line"><span class="c-keyword">const</span> { MongoClient } = <span class="c-fn">require</span>(<span class="c-str">'mongodb'</span>);</span>
+              <span class="code-line"><span class="c-comment">// URI: mongodb://127.0.0.1:27017</span></span>
+              <span class="code-line"><span class="c-keyword">const</span> db = client.<span class="c-fn">db</span>(<span class="c-str">'EducationalPortal'</span>);</span>
+              <span class="code-line"><span class="c-keyword">const</span> students = db.<span class="c-fn">collection</span>(<span class="c-str">'Students'</span>);</span>
+              <span class="code-line highlight-line">
+                <i class="fa-solid fa-check-double text-success"></i> Connected: Active & Responsive
+              </span>
+            </div>
+            <div class="quick-tech-badges">
+              <span class="tech-badge"><i class="fa-brands fa-node-js"></i> Node.js</span>
+              <span class="tech-badge"><i class="fa-solid fa-bolt"></i> Express.js</span>
+              <span class="tech-badge"><i class="fa-solid fa-leaf"></i> MongoDB Driver</span>
+              <span class="tech-badge"><i class="fa-brands fa-html5"></i> HTML5/CSS3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES SECTION -->
+  <section id="courses" class="section courses-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-book-bookmark"></i> Curriculum</span>
+        <h2 class="section-title">Explore Our Flagship Courses</h2>
+        <p class="section-subtitle">
+          Choose from career-oriented courses designed by top industry engineers. Enroll directly to store your application in MongoDB.
+        </p>
+      </div>
+
+      <div class="courses-grid" id="coursesGrid">
+        <!-- Course 1 -->
+        <div class="course-card">
+          <div class="course-card-top">
+            <span class="course-badge bestseller">Bestseller</span>
+            <div class="course-icon-bg bg-blue">
+              <i class="fa-solid fa-code"></i>
+            </div>
+          </div>
+          <div class="course-card-body">
+            <div class="course-meta">
+              <span class="course-rating"><i class="fa-solid fa-star"></i> 4.9 (1.2k)</span>
+              <span class="course-duration"><i class="fa-regular fa-clock"></i> 12 Weeks</span>
+            </div>
+            <h3 class="course-title">Full Stack Web Development (MERN)</h3>
+            <p class="course-desc">Master MongoDB, Express.js, React, and Node.js with real-world enterprise projects and RESTful API integrations.</p>
+            <div class="course-tags">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Express</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+          <div class="course-card-footer">
+            <div class="course-level"><i class="fa-solid fa-signal"></i> Beginner to Pro</div>
+            <button class="btn btn-primary btn-sm btn-enroll-now" data-course="Full Stack Web Development (MERN)">
+              <i class="fa-solid fa-arrow-right"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="course-card">
+          <div class="course-card-top">
+            <span class="course-badge trending">Trending</span>
+            <div class="course-icon-bg bg-teal">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+          </div>
+          <div class="course-card-body">
+            <div class="course-meta">
+              <span class="course-rating"><i class="fa-solid fa-star"></i> 4.8 (850)</span>
+              <span class="course-duration"><i class="fa-regular fa-clock"></i> 10 Weeks</span>
+            </div>
+            <h3 class="course-title">Python for Data Science & AI</h3>
+            <p class="course-desc">Dive into data analysis, machine learning algorithms, Pandas, NumPy, Scikit-Learn, and intelligent neural networks.</p>
+            <div class="course-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Pandas</span>
+            </div>
+          </div>
+          <div class="course-card-footer">
+            <div class="course-level"><i class="fa-solid fa-signal"></i> Intermediate</div>
+            <button class="btn btn-primary btn-sm btn-enroll-now" data-course="Python for Data Science & AI">
+              <i class="fa-solid fa-arrow-right"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="course-card">
+          <div class="course-card-top">
+            <span class="course-badge popular">Popular</span>
+            <div class="course-icon-bg bg-indigo">
+              <i class="fa-solid fa-cloud"></i>
+            </div>
+          </div>
+          <div class="course-card-body">
+            <div class="course-meta">
+              <span class="course-rating"><i class="fa-solid fa-star"></i> 4.9 (920)</span>
+              <span class="course-duration"><i class="fa-regular fa-clock"></i> 8 Weeks</span>
+            </div>
+            <h3 class="course-title">Cloud Architecture & DevOps Masterclass</h3>
+            <p class="course-desc">Learn AWS services, Docker containerization, Kubernetes clusters, and automated CI/CD deployment pipelines.</p>
+            <div class="course-tags">
+              <span class="tag">AWS</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">CI/CD</span>
+            </div>
+          </div>
+          <div class="course-card-footer">
+            <div class="course-level"><i class="fa-solid fa-signal"></i> Advanced</div>
+            <button class="btn btn-primary btn-sm btn-enroll-now" data-course="Cloud Architecture & DevOps Masterclass">
+              <i class="fa-solid fa-arrow-right"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 4 -->
+        <div class="course-card">
+          <div class="course-card-top">
+            <span class="course-badge featured">Core Specialization</span>
+            <div class="course-icon-bg bg-green">
+              <i class="fa-solid fa-database"></i>
+            </div>
+          </div>
+          <div class="course-card-body">
+            <div class="course-meta">
+              <span class="course-rating"><i class="fa-solid fa-star"></i> 4.95 (1.5k)</span>
+              <span class="course-duration"><i class="fa-regular fa-clock"></i> 6 Weeks</span>
+            </div>
+            <h3 class="course-title">Database Engineering with MongoDB & NoSQL</h3>
+            <p class="course-desc">Comprehensive database design, aggregation pipelines, indexing, sharding, replication, and high-concurrency Node.js integration.</p>
+            <div class="course-tags">
+              <span class="tag">MongoDB</span>
+              <span class="tag">NoSQL</span>
+              <span class="tag">Aggregation</span>
+              <span class="tag">Indexing</span>
+            </div>
+          </div>
+          <div class="course-card-footer">
+            <div class="course-level"><i class="fa-solid fa-signal"></i> All Levels</div>
+            <button class="btn btn-primary btn-sm btn-enroll-now" data-course="Database Engineering with MongoDB & NoSQL">
+              <i class="fa-solid fa-arrow-right"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 5 -->
+        <div class="course-card">
+          <div class="course-card-top">
+            <span class="course-badge security">High Demand</span>
+            <div class="course-icon-bg bg-purple">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+          </div>
+          <div class="course-card-body">
+            <div class="course-meta">
+              <span class="course-rating"><i class="fa-solid fa-star"></i> 4.85 (740)</span>
+              <span class="course-duration"><i class="fa-regular fa-clock"></i> 10 Weeks</span>
+            </div>
+            <h3 class="course-title">Cybersecurity & Ethical Hacking</h3>
+            <p class="course-desc">Master penetration testing, network security, threat analysis, cryptography, and defense against modern security threats.</p>
+            <div class="course-tags">
+              <span class="tag">Security</span>
+              <span class="tag">Pen Testing</span>
+              <span class="tag">Cryptography</span>
+              <span class="tag">Linux</span>
+            </div>
+          </div>
+          <div class="course-card-footer">
+            <div class="course-level"><i class="fa-solid fa-signal"></i> Intermediate</div>
+            <button class="btn btn-primary btn-sm btn-enroll-now" data-course="Cybersecurity & Ethical Hacking">
+              <i class="fa-solid fa-arrow-right"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 6 -->
+        <div class="course-card">
+          <div class="course-card-top">
+            <span class="course-badge mobile">Creative</span>
+            <div class="course-icon-bg bg-cyan">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+          </div>
+          <div class="course-card-body">
+            <div class="course-meta">
+              <span class="course-rating"><i class="fa-solid fa-star"></i> 4.75 (620)</span>
+              <span class="course-duration"><i class="fa-regular fa-clock"></i> 8 Weeks</span>
+            </div>
+            <h3 class="course-title">Mobile App Development (React Native)</h3>
+            <p class="course-desc">Build cross-platform iOS and Android applications with React Native, native modules, Redux Toolkit, and offline caching.</p>
+            <div class="course-tags">
+              <span class="tag">React Native</span>
+              <span class="tag">Mobile</span>
+              <span class="tag">iOS</span>
+              <span class="tag">Android</span>
+            </div>
+          </div>
+          <div class="course-card-footer">
+            <div class="course-level"><i class="fa-solid fa-signal"></i> Intermediate</div>
+            <button class="btn btn-primary btn-sm btn-enroll-now" data-course="Mobile App Development (React Native)">
+              <i class="fa-solid fa-arrow-right"></i> Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDENT REGISTRATION FORM SECTION -->
+  <section id="register" class="section register-section">
+    <div class="container">
+      <div class="register-layout">
+        <div class="register-info-panel">
+          <span class="section-tag light"><i class="fa-solid fa-user-plus"></i> Admissions</span>
+          <h2 class="panel-title">Student Registration & Enrollment</h2>
+          <p class="panel-desc">
+            Submit your information to register for your target technical course. Your registration is saved directly into the MongoDB Community Server collection <code>Students</code> using the <code>insertOne()</code> operation.
+          </p>
+
+          <div class="panel-features">
+            <div class="feature-item">
+              <div class="f-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div class="f-text">
+                <strong>Instant Database Sync:</strong>
+                <p>Records are inserted immediately into <code>EducationalPortal.Students</code>.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="f-icon"><i class="fa-solid fa-pen-nib"></i></div>
+              <div class="f-text">
+                <strong>Modifiable Enrollments:</strong>
+                <p>Change your enrolled course at any time from the dashboard via <code>updateOne()</code>.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="f-icon"><i class="fa-solid fa-id-badge"></i></div>
+              <div class="f-text">
+                <strong>Unique MongoDB ObjectId:</strong>
+                <p>Every student record is assigned an immutable 12-byte <code>_id</code>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="db-spec-box">
+            <div class="spec-row">
+              <span class="spec-label">MongoDB Host:</span>
+              <span class="spec-value">127.0.0.1:27017</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Target Database:</span>
+              <span class="spec-value highlight">EducationalPortal</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Target Collection:</span>
+              <span class="spec-value highlight">Students</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="register-form-panel">
+          <div class="form-header">
+            <h3><i class="fa-solid fa-file-pen text-primary"></i> Registration Form</h3>
+            <p>Please enter accurate details to complete your enrollment.</p>
+          </div>
+
+          <form id="studentRegistrationForm" class="registration-form" novalidate>
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="studentName"><i class="fa-regular fa-user"></i> Full Name <span class="required">*</span></label>
+              <input type="text" id="studentName" name="name" class="form-control" placeholder="e.g. John Doe" required>
+              <span class="error-msg" id="nameError"></span>
+            </div>
+
+            <!-- Email & Phone Grid -->
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="studentEmail"><i class="fa-regular fa-envelope"></i> Email Address <span class="required">*</span></label>
+                <input type="email" id="studentEmail" name="email" class="form-control" placeholder="e.g. john@example.com" required>
+                <span class="error-msg" id="emailError"></span>
+              </div>
+              <div class="form-group col-6">
+                <label for="studentPhone"><i class="fa-solid fa-phone"></i> Phone Number <span class="required">*</span></label>
+                <input type="tel" id="studentPhone" name="phone" class="form-control" placeholder="e.g. +1 234 567 8900" required>
+                <span class="error-msg" id="phoneError"></span>
+              </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="form-group">
+              <label for="studentCourse"><i class="fa-solid fa-graduation-cap"></i> Select Course <span class="required">*</span></label>
+              <select id="studentCourse" name="course" class="form-control" required>
+                <option value="" disabled selected>-- Choose a Course --</option>
+                <option value="Full Stack Web Development (MERN)">Full Stack Web Development (MERN)</option>
+                <option value="Python for Data Science & AI">Python for Data Science & AI</option>
+                <option value="Cloud Architecture & DevOps Masterclass">Cloud Architecture & DevOps Masterclass</option>
+                <option value="Database Engineering with MongoDB & NoSQL">Database Engineering with MongoDB & NoSQL</option>
+                <option value="Cybersecurity & Ethical Hacking">Cybersecurity & Ethical Hacking</option>
+                <option value="Mobile App Development (React Native)">Mobile App Development (React Native)</option>
+              </select>
+              <span class="error-msg" id="courseError"></span>
+            </div>
+
+            <!-- Learning Mode & Enrollment Date -->
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="learningMode"><i class="fa-solid fa-laptop-code"></i> Learning Mode</label>
+                <select id="learningMode" name="learningMode" class="form-control">
+                  <option value="Online Live" selected>Online Live Classes</option>
+                  <option value="Self-Paced">Self-Paced Video</option>
+                  <option value="Hybrid">Hybrid (Classroom + Online)</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="enrollmentDate"><i class="fa-regular fa-calendar"></i> Enrollment Date</label>
+                <input type="date" id="enrollmentDate" name="enrollmentDate" class="form-control">
+              </div>
+            </div>
+
+            <!-- Optional Notes -->
+            <div class="form-group">
+              <label for="studentNotes"><i class="fa-regular fa-comment-dots"></i> Academic Background / Goals</label>
+              <textarea id="studentNotes" name="notes" class="form-control" rows="2" placeholder="e.g. Computer Science undergraduate aiming to build scalable applications"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="btnSubmitRegistration" class="btn btn-primary btn-block btn-lg">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <span id="btnSubmitText">Register Student (Save to MongoDB)</span>
+              <span class="spinner" id="submitSpinner"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDENT DASHBOARD SECTION -->
+  <section id="dashboard" class="section dashboard-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-chart-line"></i> Management Console</span>
+        <h2 class="section-title">Student Records Dashboard</h2>
+        <p class="section-subtitle">
+          Manage enrolled students via live MongoDB CRUD operations. Records are fetched with <code>find({}).toArray()</code>, modified with <code>updateOne()</code>, and removed with <code>deleteOne()</code>.
+        </p>
+      </div>
+
+      <!-- Dashboard Stats -->
+      <div class="dashboard-stats-grid">
+        <div class="stat-box">
+          <div class="stat-icon bg-blue-subtle text-primary">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-title">Total Enrolled</span>
+            <h3 class="stat-value" id="statTotalStudents">0</h3>
+            <span class="stat-sub">Live records in collection</span>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon bg-teal-subtle text-teal">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-title">Offered Courses</span>
+            <h3 class="stat-value">6</h3>
+            <span class="stat-sub">Active curriculum</span>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon bg-indigo-subtle text-indigo">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-title">Database Name</span>
+            <h3 class="stat-value text-code">EducationalPortal</h3>
+            <span class="stat-sub">Local Community Server</span>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon bg-green-subtle text-success">
+            <i class="fa-solid fa-table-list"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-title">Target Collection</span>
+            <h3 class="stat-value text-code">Students</h3>
+            <span class="stat-sub">Schema-free document store</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table Card Container -->
+      <div class="dashboard-table-card">
+        <!-- Dashboard Filter & Search Bar -->
+        <div class="dashboard-toolbar">
+          <div class="toolbar-search">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="dashboardSearch" class="search-input" placeholder="Search by name, email, or phone...">
+          </div>
+          <div class="toolbar-filters">
+            <select id="courseFilter" class="filter-select">
+              <option value="ALL">All Courses</option>
+              <option value="Full Stack Web Development (MERN)">Full Stack Web Development</option>
+              <option value="Python for Data Science & AI">Python Data Science & AI</option>
+              <option value="Cloud Architecture & DevOps Masterclass">Cloud Architecture & DevOps</option>
+              <option value="Database Engineering with MongoDB & NoSQL">Database Engineering</option>
+              <option value="Cybersecurity & Ethical Hacking">Cybersecurity</option>
+              <option value="Mobile App Development (React Native)">Mobile App Development</option>
+            </select>
+            <button id="btnRefreshStudents" class="btn btn-outline btn-sm" title="Refresh from MongoDB">
+              <i class="fa-solid fa-rotate"></i> Refresh
+            </button>
+          </div>
+        </div>
+
+        <!-- Table Responsive Container -->
+        <div class="table-responsive">
+          <table class="students-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Student Details</th>
+                <th>Contact Info</th>
+                <th>Enrolled Course</th>
+                <th>Learning Mode</th>
+                <th>Enrollment Date</th>
+                <th class="text-center">Actions (CRUD)</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody">
+              <!-- Dynamically populated by script.js -->
+              <tr class="table-loading-row">
+                <td colspan="7">
+                  <div class="loading-state">
+                    <span class="spinner-large"></span>
+                    <p>Fetching student records from MongoDB...</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty State (hidden by default) -->
+        <div id="emptyStudentsState" class="empty-state d-none">
+          <div class="empty-icon"><i class="fa-solid fa-folder-open"></i></div>
+          <h4>No Student Records Found</h4>
+          <p>No students have been registered in the MongoDB <code>Students</code> collection yet.</p>
+          <a href="#register" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-plus"></i> Register First Student</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-circle-info"></i> About Project</span>
+        <h2 class="section-title">Educational Course Portal Architecture</h2>
+        <p class="section-subtitle">
+          Built strictly following Experiment No. 11: Database Integration in Node.js Application Using MongoDB.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon"><i class="fa-brands fa-node"></i></div>
+          <h3>Node.js & Express.js</h3>
+          <p>Robust asynchronous server using Express middleware to handle JSON requests, static file routing, and RESTful API endpoints for the student portal.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><i class="fa-solid fa-database"></i></div>
+          <h3>Official MongoDB Driver</h3>
+          <p>Uses the official <code>mongodb</code> driver package to connect directly to local MongoDB Community Server (<code>mongodb://127.0.0.1:27017</code>).</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+          <h3>Full CRUD Lifecycle</h3>
+          <p>Real-time execution of <code>insertOne()</code>, <code>find({}).toArray()</code>, <code>updateOne()</code> with <code>$set</code>, and <code>deleteOne()</code>.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><i class="fa-solid fa-palette"></i></div>
+          <h3>Professional Blue UI</h3>
+          <p>Crisp, accessible blue and white visual design featuring responsive grid systems, interactive feedback modals, and dynamic data filtering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> Contact Us</span>
+        <h2 class="section-title">Get in Touch with Academic Support</h2>
+        <p class="section-subtitle">
+          Have questions about our curriculum or your registration? Our admissions team is here to assist.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-cards">
+          <div class="contact-card">
+            <div class="c-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h4>Campus Address</h4>
+              <p>Department of Computer Science & Engineering, Tech Academic Campus</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="c-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h4>Email Support</h4>
+              <p>admissions@educourseportal.edu</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="c-icon"><i class="fa-solid fa-headset"></i></div>
+            <div>
+              <h4>Helpline</h4>
+              <p>+1 (800) 555-EDU1 (Mon - Fri, 9am - 6pm)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <form id="contactForm" onsubmit="event.preventDefault(); showToast('Thank you for contacting us! We will respond shortly.', 'success'); this.reset();">
+            <div class="form-group">
+              <label for="contactName">Your Name</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Jane Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="jane@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" class="form-control" placeholder="Course syllabus inquiry" required>
+            </div>
+            <div class="form-group">
+              <label for="contactMsg">Message</label>
+              <textarea id="contactMsg" class="form-control" rows="3" placeholder="Write your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="brand-text">
+          <span class="brand-title text-white"><i class="fa-solid fa-graduation-cap"></i> EduCourse Portal</span>
+          <p class="brand-desc">Experiment No. 11 - Database Integration in Node.js Application Using MongoDB.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#register">Register</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 EduCourse Portal. All rights reserved. Built with Node.js, Express & MongoDB.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EDIT STUDENT MODAL (PUT /api/students/:id) -->
+  <div id="editModal" class="modal-overlay d-none">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-user-pen text-primary"></i>
+          <h3>Modify Student Details</h3>
+        </div>
+        <button id="btnCloseModal" class="btn-close-modal" aria-label="Close Modal">&times;</button>
+      </div>
+
+      <form id="editStudentForm" class="modal-form">
+        <input type="hidden" id="editStudentId" name="id">
+
+        <div class="form-group">
+          <label for="editStudentName"><i class="fa-regular fa-user"></i> Full Name <span class="required">*</span></label>
+          <input type="text" id="editStudentName" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-6">
+            <label for="editStudentEmail"><i class="fa-regular fa-envelope"></i> Email <span class="required">*</span></label>
+            <input type="email" id="editStudentEmail" name="email" class="form-control" required>
+          </div>
+          <div class="form-group col-6">
+            <label for="editStudentPhone"><i class="fa-solid fa-phone"></i> Phone</label>
+            <input type="tel" id="editStudentPhone" name="phone" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editStudentCourse"><i class="fa-solid fa-graduation-cap"></i> Enrolled Course <span class="required">*</span></label>
+          <select id="editStudentCourse" name="course" class="form-control" required>
+            <option value="Full Stack Web Development (MERN)">Full Stack Web Development (MERN)</option>
+            <option value="Python for Data Science & AI">Python for Data Science & AI</option>
+            <option value="Cloud Architecture & DevOps Masterclass">Cloud Architecture & DevOps Masterclass</option>
+            <option value="Database Engineering with MongoDB & NoSQL">Database Engineering with MongoDB & NoSQL</option>
+            <option value="Cybersecurity & Ethical Hacking">Cybersecurity & Ethical Hacking</option>
+            <option value="Mobile App Development (React Native)">Mobile App Development (React Native)</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-6">
+            <label for="editLearningMode"><i class="fa-solid fa-laptop-code"></i> Learning Mode</label>
+            <select id="editLearningMode" name="learningMode" class="form-control">
+              <option value="Online Live">Online Live</option>
+              <option value="Self-Paced">Self-Paced</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="form-group col-6">
+            <label for="editEnrollmentDate"><i class="fa-regular fa-calendar"></i> Enrollment Date</label>
+            <input type="date" id="editEnrollmentDate" name="enrollmentDate" class="form-control">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btnCancelEdit" class="btn btn-outline">Cancel</button>
+          <button type="submit" id="btnSaveEdit" class="btn btn-primary">
+            <i class="fa-solid fa-floppy-disk"></i> Update Details (MongoDB $set)
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRMATION MODAL (DELETE /api/students/:id) -->
+  <div id="deleteModal" class="modal-overlay d-none">
+    <div class="modal-card modal-confirm">
+      <div class="modal-icon-danger">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h3>Delete Student Record?</h3>
+      <p>Are you sure you want to delete <strong id="deleteStudentName"></strong>? This will execute <code>deleteOne()</code> on the MongoDB <code>Students</code> collection and cannot be undone.</p>
+      <input type="hidden" id="deleteStudentId">
+      <div class="modal-footer justify-center">
+        <button type="button" id="btnCancelDelete" class="btn btn-outline">Cancel</button>
+        <button type="button" id="btnConfirmDelete" class="btn btn-danger">
+          <i class="fa-solid fa-trash-can"></i> Yes, Delete Record
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

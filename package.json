@@ -1,0 +1,25 @@
+{
+  "name": "experiment11-educational-portal",
+  "version": "1.0.0",
+  "description": "Experiment No. 11: Database Integration in Node.js Application Using MongoDB - Educational Course Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "crud",
+    "education-portal"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^6.13.0"
+  }
+}
+
